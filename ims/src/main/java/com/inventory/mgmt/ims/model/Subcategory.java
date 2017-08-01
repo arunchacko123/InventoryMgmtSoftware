@@ -1,5 +1,7 @@
 package com.inventory.mgmt.ims.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +15,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="sub_category")
-public class Subcategory {
+public class Subcategory implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "sub_category_id ")

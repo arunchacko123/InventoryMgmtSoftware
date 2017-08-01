@@ -6,6 +6,7 @@ import com.inventory.mgmt.ims.model.Category;
 
 public interface CategoryService {
 	
+	
 	Category findById(Long id);
 
 	Category findByName(String name);

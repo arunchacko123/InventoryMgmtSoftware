@@ -17,6 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name="sub_category")
 public class Subcategory implements Serializable{
 	
+	
 	/**
 	 * 
 	 */

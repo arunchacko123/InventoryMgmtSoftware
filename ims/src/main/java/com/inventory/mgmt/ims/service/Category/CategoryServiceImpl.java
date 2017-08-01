@@ -13,6 +13,7 @@ import com.inventory.mgmt.ims.repositories.CategoryRepository;
 @Transactional
 public class CategoryServiceImpl implements CategoryService{
 	@Autowired
+	
 	private CategoryRepository categoryRepository;
 
 	public Category findById(Long id) {

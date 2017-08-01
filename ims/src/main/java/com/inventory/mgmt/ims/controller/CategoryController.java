@@ -21,6 +21,7 @@ import com.inventory.mgmt.ims.util.CustomErrorType;
 
 @RestController
 @RequestMapping("/category")
+
 public class CategoryController {
 	public static final Logger logger = LoggerFactory.getLogger(CategoryController.class);
 	 

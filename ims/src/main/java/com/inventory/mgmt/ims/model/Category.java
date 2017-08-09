@@ -28,7 +28,6 @@ public class Category implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "category_id")
 	private Long categoryId;
-	@NotEmpty
 	@Column(name = "category_code")
 	private Long categoryCode;
 	@NotEmpty
@@ -37,9 +36,8 @@ public class Category implements Serializable{
 	@NotEmpty
 	@Column(name="category_description", nullable=false)
 	private String categoryDesc;
-	@NotEmpty
 	@Column(name="isactive ", nullable=false)
-	private boolean isActive;
+	private boolean active;
 	
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	private Set<Subcategory> subCategory;
@@ -69,10 +67,10 @@ public class Category implements Serializable{
 		this.categoryDesc = categoryDesc;
 	}
 	public boolean isActive() {
-		return isActive;
+		return active;
 	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	public Set<Subcategory> getSubCategory() {
 		return subCategory;

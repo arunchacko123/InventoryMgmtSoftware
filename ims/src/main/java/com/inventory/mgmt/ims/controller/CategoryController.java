@@ -20,7 +20,7 @@ import com.inventory.mgmt.ims.service.Category.CategoryService;
 import com.inventory.mgmt.ims.util.CustomErrorType;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/categorymgmt")
 
 public class CategoryController {
 	

@@ -35,23 +35,23 @@ public class SubCategoryController {
 
 	@RequestMapping(value = "/subcategory/", method = RequestMethod.GET)
 	public ResponseEntity<List<Subcategory>> listAllUsers() {
-		List<Subcategory> Category = subcategoryService.findAllSubcategorys();
-		if (Category.isEmpty()) {
+		List<Subcategory> subCategory = subcategoryService.findAllSubcategorys();
+		if (subCategory.isEmpty()) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 			// You many decide to return HttpStatus.NOT_FOUND
 		}
-		return new ResponseEntity<List<Subcategory>>(Category, HttpStatus.OK);
+		return new ResponseEntity<List<Subcategory>>(subCategory, HttpStatus.OK);
 	}
 
 	// -------------------Retrieve Single SubCategory------------------------------------------
 
 	@RequestMapping(value = "/subcategory/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getCategory(@PathVariable("id") long id) {
-		logger.info("Fetching Category with id {}", id);
+		logger.info("Fetching Subcategory with id {}", id);
 		Subcategory category = subcategoryService.findById(id);
 		if (category == null) {
 			logger.error("User with id {} not found.", id);
-			return new ResponseEntity(new CustomErrorType("Category with id " + id 
+			return new ResponseEntity(new CustomErrorType("subCategory with id " + id 
 					+ " not found"), HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Subcategory>(category, HttpStatus.OK);
@@ -61,11 +61,11 @@ public class SubCategoryController {
 
 	@RequestMapping(value = "/subcategory/", method = RequestMethod.POST)
 	public ResponseEntity<?> createUser(@RequestBody Subcategory subcategory, UriComponentsBuilder ucBuilder) {
-		logger.info("Creating Category : {}", subcategory);
+		logger.info("Creating Subcategory : {}", subcategory);
 
 		if (subcategoryService.isSubcategoryExist(subcategory)) {
-			logger.error("Unable to create. A Category with name {} already exist", subcategory.getSubCategoryName());
-			return new ResponseEntity(new CustomErrorType("Unable to create. A Category with name " + 
+			logger.error("Unable to create. A Subcategory with name {} already exist", subcategory.getSubCategoryName());
+			return new ResponseEntity(new CustomErrorType("Unable to create. A Subcategory with name " + 
 					subcategory.getSubCategoryName() + " already exist."),HttpStatus.CONFLICT);
 		}
 		subcategoryService.saveSubcategory(subcategory);
@@ -101,7 +101,7 @@ public class SubCategoryController {
 
 	@RequestMapping(value = "/subcategory/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteCategory(@PathVariable("id") long id) {
-		logger.info("Fetching & Deleting Category with id {}", id);
+		logger.info("Fetching & Deleting Subcategory with id {}", id);
 
 		Subcategory subcategory = subcategoryService.findById(id);
 		if (subcategory == null) {
@@ -117,7 +117,7 @@ public class SubCategoryController {
 
 	@RequestMapping(value = "/subcategory/", method = RequestMethod.DELETE)
 	public ResponseEntity<Subcategory> deleteAllCategorys() {
-		logger.info("Deleting All Categorys");
+		logger.info("Deleting All Subcategorys");
 
 		subcategoryService.deleteAllSubcategorys();
 		return new ResponseEntity<Subcategory>(HttpStatus.NO_CONTENT);

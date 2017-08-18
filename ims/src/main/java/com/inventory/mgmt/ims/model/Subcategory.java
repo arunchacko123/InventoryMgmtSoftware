@@ -24,7 +24,7 @@ public class Subcategory implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "sub_category_id ")
+	@Column(name = "sub_category_id")
 	private Long subCategoryId;
 	@NotEmpty
 	@Column(name = "sub_category_code")
@@ -32,15 +32,15 @@ public class Subcategory implements Serializable{
 	@NotEmpty
 	@Column(name="sub_category_name ", nullable=false)
 	private String subCategoryName;
-	@NotEmpty
+	
 	@Column(name="sub_category_description", nullable=false)
 	private String subCategoryDesc;
-	@NotEmpty
+	
 	@Column(name="isactive ", nullable=false)
-	private boolean isActive;
-	@ManyToOne
-	@JoinColumn(name = "category_id")
-	private Category category;
+	private boolean active;
+	
+	@Column(name = "category_id")
+	private Long category;
 	
 	
 	public Long getSubCategoryId() {
@@ -67,17 +67,18 @@ public class Subcategory implements Serializable{
 	public void setSubCategoryDesc(String subCategoryDesc) {
 		this.subCategoryDesc = subCategoryDesc;
 	}
-	public boolean isActive() {
-		return isActive;
-	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-	public Category getCategory() {
+
+	public Long getCategory() {
 		return category;
 	}
-	public void setCategory(Category category) {
+	public void setCategory(Long category) {
 		this.category = category;
+	}
+	private boolean isActive() {
+		return active;
+	}
+	private void setActive(boolean active) {
+		this.active = active;
 	}
 	
    

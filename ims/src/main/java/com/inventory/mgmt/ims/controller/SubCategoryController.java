@@ -34,7 +34,7 @@ public class SubCategoryController {
 	// -------------------Retrieve All SubCategory---------------------------------------------
 
 	@RequestMapping(value = "/subcategory/", method = RequestMethod.GET)
-	public ResponseEntity<List<Subcategory>> listAllUsers() {
+	public ResponseEntity<List<Subcategory>> listAllSubCategorys() {
 		List<Subcategory> subCategory = subcategoryService.findAllSubcategorys();
 		if (subCategory.isEmpty()) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -50,7 +50,7 @@ public class SubCategoryController {
 		logger.info("Fetching Subcategory with id {}", id);
 		Subcategory category = subcategoryService.findById(id);
 		if (category == null) {
-			logger.error("User with id {} not found.", id);
+			logger.error("SubCategory with id {} not found.", id);
 			return new ResponseEntity(new CustomErrorType("subCategory with id " + id 
 					+ " not found"), HttpStatus.NOT_FOUND);
 		}
@@ -60,7 +60,7 @@ public class SubCategoryController {
 	// -------------------Create a SubCategory-------------------------------------------
 
 	@RequestMapping(value = "/subcategory/", method = RequestMethod.POST)
-	public ResponseEntity<?> createUser(@RequestBody Subcategory subcategory, UriComponentsBuilder ucBuilder) {
+	public ResponseEntity<?> createSubCategory(@RequestBody Subcategory subcategory, UriComponentsBuilder ucBuilder) {
 		logger.info("Creating Subcategory : {}", subcategory);
 
 		if (subcategoryService.isSubcategoryExist(subcategory)) {
@@ -79,7 +79,7 @@ public class SubCategoryController {
 
 	@RequestMapping(value = "/subcategory/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<?> updateCategory(@PathVariable("id") long id, @RequestBody Subcategory subcategory) {
-		logger.info("Updating User with id {}", id);
+		logger.info("Updating SubCategory with id {}", id);
 
 		Subcategory currentSubcategory = subcategoryService.findById(id);
 

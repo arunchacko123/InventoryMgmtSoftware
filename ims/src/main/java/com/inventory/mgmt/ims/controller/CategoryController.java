@@ -32,7 +32,7 @@ public class CategoryController {
 	// -------------------Retrieve All Category---------------------------------------------
 
 	@RequestMapping(value = "/category/", method = RequestMethod.GET)
-	public ResponseEntity<List<Category>> listAllUsers() {
+	public ResponseEntity<List<Category>> listAllCategorys() {
 		List<Category> Category = categoryService.findAllCategorys();
 		if (Category.isEmpty()) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -48,7 +48,7 @@ public class CategoryController {
 		logger.info("Fetching Category with id {}", id);
 		Category category = categoryService.findById(id);
 		if (category == null) {
-			logger.error("User with id {} not found.", id);
+			logger.error("Category with id {} not found.", id);
 			return new ResponseEntity(new CustomErrorType("Category with id " + id 
 					+ " not found"), HttpStatus.NOT_FOUND);
 		}
@@ -58,7 +58,7 @@ public class CategoryController {
 	// -------------------Create a Category-------------------------------------------
 
 	@RequestMapping(value = "/category/", method = RequestMethod.POST)
-	public ResponseEntity<?> createUser(@RequestBody Category category, UriComponentsBuilder ucBuilder) {
+	public ResponseEntity<?> createCategory(@RequestBody Category category, UriComponentsBuilder ucBuilder) {
 		logger.info("Creating Category : {}", category);
 
 		if (categoryService.isCategoryExist(category)) {
@@ -77,7 +77,7 @@ public class CategoryController {
 
 	@RequestMapping(value = "/category/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<?> updateCategory(@PathVariable("id") long id, @RequestBody Category category) {
-		logger.info("Updating User with id {}", id);
+		logger.info("Updating Category with id {}", id);
 
 		Category currentCategory = categoryService.findById(id);
 

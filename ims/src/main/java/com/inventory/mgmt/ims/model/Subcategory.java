@@ -74,10 +74,10 @@ public class Subcategory implements Serializable{
 	public void setCategory(Long category) {
 		this.category = category;
 	}
-	private boolean isActive() {
+	public boolean isActive() {
 		return active;
 	}
-	private void setActive(boolean active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 	

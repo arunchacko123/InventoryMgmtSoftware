@@ -1,13 +1,20 @@
 package com.inventory.mgmt.ims.model;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
+@Entity
+@Table(name="vendor")
 public class Vendor {
 	/**
 	 * 
@@ -34,6 +41,9 @@ public class Vendor {
 	private Date vendorCreatedDate;
 	@Column(name="vendor_tax_number")
 	private String vendorTaxNumber;
+	
+	@OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
+	private Set<PurchaseOrder> purchaseOrder;
 	
 	
 	public Long getVendorId() {
@@ -77,6 +87,12 @@ public class Vendor {
 	}
 	public void setVendorTaxNumber(String vendorTaxNumber) {
 		this.vendorTaxNumber = vendorTaxNumber;
+	}
+	public Set<PurchaseOrder> getPurchaseOrder() {
+		return purchaseOrder;
+	}
+	public void setPurchaseOrder(Set<PurchaseOrder> purchaseOrder) {
+		this.purchaseOrder = purchaseOrder;
 	}
 	
 	
